@@ -29,13 +29,11 @@
         class="form-control"
         [(ngModel)]="user.email"
          required
-         #name="ngModel">
+         #email="ngModel">
 
          remove this : {{user.email}}
-         <div [hidden]="user.valid"
-        class="alert alert-danger ">
-        Email is required
-    </div>
+         <div [hidden]="email.valid || email.pristine"
+      class="alert alert-danger col-md-4"> Email is required </div>
     </div>
     
 
