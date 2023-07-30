@@ -1,16 +1,6 @@
-:root {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    
-}
 
 form {
-    background-color: grey;
-    display: grid;
-    grid: auto-flow dense ;
-    align-items: center;
-    
+    background-color: whitesmoke;
     
 }
 
