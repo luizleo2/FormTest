@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import {  ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function validateNIF(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
