@@ -78,8 +78,9 @@ Confesso que tive alguns desafios ao implementar as soluções e conectar a lóg
 
 # Tempo de Produção ⏱️
 
--1 dia para montar o formulário e validar os campos de: Nome, Email, Nif
--1 dia inteiro para tentar as restantes validações e refatorar o codigo 
+- 1 dia para montar o formulário e validar os campos de: Nome, Email, Nif
+- 
+- 1 dia inteiro para tentar as restantes validações e refatorar o codigo 
 
 
 ## Segunda chance 🥈
