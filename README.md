@@ -59,7 +59,7 @@ O formulário deve ter 10 campos, sendo eles:
 
 Segue aqui o Design do projeto 
 
-### Wireframe
+### Layout
 
 "Colocar a foto"
 
