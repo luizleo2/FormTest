@@ -86,6 +86,21 @@ Confesso que tive alguns desafios ao implementar as soluções e conectar a lóg
 ## Segunda chance 🥈
 
 Se eu tivesse uma segunda oportunidade para continuar este projeto, eu finalizaria os campos restantes. 
+
 Adicionaria mais estilização e alteraria a forma de visualização com um formulário em etapas (multi-step),
-assim proporcionando uma maior interatividade com o cliente. Além disso, facilitaria a correção de erros, 
+assim proporcionando uma maior interatividade com o cliente.
+
+Além disso, facilitaria a correção de erros, 
 pois haveria "menos" campos visíveis para responder.
+
+
+## Considerações Finais :floppy_disk:
+
+Me sinto realizado e motivado por terminar esta etapa, tendo em vista que este é o meu primeiro contato com Angular. 
+Acredito ter realizado um bom trabalho e atendido minimamente às expectativas.
+
+Um muito obrigado pelo seu tempo, e todo conselho de melhoria é muito bem-vindo e necessário para esse meu início de caminhada, independente do resultado
+
+> Para a versão final clique aqui [this](https://form-test-six-sigma.vercel.app/)
+
+
