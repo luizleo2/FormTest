@@ -22,11 +22,11 @@ export class FormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       nif: ['', [Validators.required, validateNIF()]],
       dateOfBirth: ['', [Validators.required,]],
+      address: ['',[Validators.required,]],
       telefone: ['', [Validators.required, validatePhoneNumber]],
       zipcode: ['', [Validators.required]],
       inputCountry: [''],
       inputCity: [''],
-      inputAddress: [''],
     });
   }
 
