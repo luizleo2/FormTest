@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { validateNIF } from '../NifValidator/nif-validator';
 import { checkAge } from '../DateValidator/dateValidator';
+import { validatePhoneNumber } from '../NumberValidator/numbervalidator';
 
 @Component({
   selector: 'app-form',
@@ -21,11 +22,11 @@ export class FormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       nif: ['', [Validators.required, validateNIF()]],
       dateOfBirth: ['', [Validators.required,]],
+      telefone: ['', [Validators.required, validatePhoneNumber]],
       zipcode: ['', [Validators.required]],
       inputCountry: [''],
       inputCity: [''],
       inputAddress: [''],
-      inputContact: [''],
     });
   }
 
