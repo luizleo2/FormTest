@@ -1,50 +1,54 @@
-
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { validateNIF } from '../NifValidator/nif-validator';
 import { checkAge } from '../DateValidator/dateValidator';
 import { validatePhoneNumber } from '../NumberValidator/numbervalidator';
+import { CountryNode, getCountriesList } from '../CountryValidator/countryValidator';
+import { validatePortugalPostalCode } from '../ZipCodeValidator/zipCodeValidator'
+
 
 @Component({
+
   selector: 'app-form',
-  templateUrl: './form.component.html',
+  templateUrl:'./form.component.html',
   styleUrls: ['./form.component.css']
 })
 
 export class FormComponent implements OnInit {
   form: FormGroup;
+  formSubmitted = false;
+  showMessage = false;
+
   dateOfBirth: string = ''; 
   validationResult: string = '';
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       nif: ['', [Validators.required, validateNIF()]],
-      dateOfBirth: ['', [Validators.required,]],
+      dateOfBirth: ['', [Validators.required, this.ageValidator]],
       address: ['',[Validators.required,]],
-      telefone: ['', [Validators.required, validatePhoneNumber]],
-      zipcode: ['', [Validators.required]],
-      inputCountry: [''],
-      inputCity: [''],
+      phoneNumber: ['', [Validators.required, validatePhoneNumber]],
+      postalCode: ['', [Validators.required]],
+      country: ['',[Validators.required]],
+      city: [''],
     });
   }
 
-  validateDate() {
-    if (this.form.valid) {
-      const dateOfBirth = this.form.controls['dateOfBirth'].value;
-      this.validationResult = checkAge(dateOfBirth);
-  }
-}
-  
-  ngOnInit() {
+  ageValidator(control: any): { [key: string]: any } | null {
+    return checkAge(control.value) === 'Maior de 18' ? null : { 'invalidAge': true };
   }
 
+  ngOnInit() {
+
+  }
+
+  
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value);
-    } else {
-      console.log('Formulário inválido. Corrija os erros antes de enviar.');
+      this.formSubmitted = true;
+      console.log('Formulário válido. Enviando dados...');
     }
   }
 }
