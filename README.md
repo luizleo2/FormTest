@@ -79,7 +79,7 @@ Confesso que tive alguns desafios ao implementar as soluções e conectar a lóg
 # Tempo de Produção ⏱️
 
 - 1 dia para montar o formulário e validar os campos de: Nome, Email, Nif
-- 
+- 1 dia para melhorar a interface 
 - 1 dia inteiro para tentar as restantes validações e refatorar o codigo 
 
 
@@ -88,6 +88,7 @@ Confesso que tive alguns desafios ao implementar as soluções e conectar a lóg
 Se eu tivesse uma segunda oportunidade para continuar este projeto, eu finalizaria os campos restantes. 
 
 Adicionaria mais estilização e alteraria a forma de visualização com um formulário em etapas (multi-step),
+os campos de Data de nascimento e contato usaria mascaras da propria biblioteca do angular 
 assim proporcionando uma maior interatividade com o cliente.
 
 Além disso, facilitaria a correção de erros, 
