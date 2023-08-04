@@ -1,5 +1,4 @@
-export function validatePortugalPostalCode(control: any): { [key: string]: any } | null {
-    
+export function validatePortugalPostalCode(control: any) {
     const postalCodePattern = /^[0-9]{4}-[0-9]{3}$/;
   
     
