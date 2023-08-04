@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { validateNIF } from '../NifValidator/nif-validator';
 import { checkAge } from '../DateValidator/dateValidator';
 import { validatePhoneNumber } from '../NumberValidator/numbervalidator';
-import { CountryNode, getCountriesList } from '../CountryValidator/countryValidator';
-import { validatePortugalPostalCode } from '../ZipCodeValidator/zipCodeValidator'
 
 
 @Component({
@@ -17,7 +15,7 @@ import { validatePortugalPostalCode } from '../ZipCodeValidator/zipCodeValidator
 export class FormComponent implements OnInit {
   form: FormGroup;
   formSubmitted = false;
-  showMessage = false;
+  
 
   dateOfBirth: string = ''; 
   validationResult: string = '';
@@ -40,15 +38,28 @@ export class FormComponent implements OnInit {
     return checkAge(control.value) === 'Maior de 18' ? null : { 'invalidAge': true };
   }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
   
-  onSubmit() {
-    if (this.form.valid) {
-      this.formSubmitted = true;
-      console.log('Formulário válido. Enviando dados...');
+  isFormIncomplete(): boolean {
+    const nameControl = this.form.get('name');
+    const emailControl = this.form.get('email');
+    const birthControl = this.form.get('dateOfBirth');
+    const nifControl = this.form.get('nif');
+    const addressControl = this.form.get('address');
+    const phoneControl = this.form.get('phoneNumber');
+  
+    // Verificar se algum campo obrigatório está vazio
+    if (!nameControl?.value || !emailControl?.value || !birthControl?.value
+      || !nifControl?.value || !addressControl?.value || !phoneControl?.value) {
+      return true;
     }
+    return false;
+} 
+
+  onSubmit() {
+    this.formSubmitted = true;
+    console.log('Formulário enviado.');
   }
 }
+
+

@@ -18,10 +18,11 @@
 
     <div class="form-group">
         <label for="name">Nome:</label>
-    
         <input type="text" placeholder="Insira seu nome" class="form-control item" id="name" formControlName="name" required>
-        <div *ngIf="form.get('name')?.errors?.['required']" class="alert alert-danger">Nome é obrigatório</div>
+        <div *ngIf="form.get('name')?.errors?.['required'] && form.get('name')!.touched" class="alert alert-danger">Nome é obrigatório</div>
     </div>
+
+    
   
     <div class="form-group">
       
@@ -29,8 +30,8 @@
     
       
         <input type="email" placeholder="Insira seu Email" class="form-control item" id="email" formControlName="email" required>
-        <div *ngIf="form.get('email')?.errors?.['required']" class="alert alert-danger">Email é obrigatório</div>
-        <div *ngIf="form.get('email')?.errors?.['email']" class="alert alert-danger">Formato de email inválido</div>
+        <div *ngIf="form.get('email')?.errors?.['required'] && form.get('email')!.touched" class="alert alert-danger">Email é obrigatório</div>
+        <div *ngIf="form.get('email')?.errors?.['email']&& form.get('email')!.touched" class="alert alert-danger">Formato de email inválido</div>
       </div>
   
   
@@ -40,10 +41,10 @@
       
       
         <input type="date" class="form-control item"  id="birth-date" formControlName="dateOfBirth" required>
-        <p *ngIf="form.get('dateOfBirth')?.errors?.['required']" class="alert alert-danger">
+        <p *ngIf="form.get('dateOfBirth')?.errors?.['required'] && form.get('dateOfBirth')!.touched" class="alert alert-danger">
           A data de nascimento é obrigatória.
         </p>
-        <p *ngIf="form.get('dateOfBirth')?.errors?.['invalidAge']" class="alert alert-danger">
+        <p *ngIf="form.get('dateOfBirth')?.errors?.['invalidAge'] && form.get('dateOfBirth')!.touched" class="alert alert-danger">
           A idade mínima é de 18 anos.
         </p>
       </div>
@@ -53,13 +54,13 @@
     <div class="form-group">
       <label for="nif">NIF:</label>
       <input type="text"  placeholder="Insira o NIF" class="form-control item" formControlName="nif" required>
-      <div *ngIf="form.get('nif')?.errors?.['required']" class="alert alert-danger">
+      <div *ngIf="form.get('nif')?.errors?.['required'] && form.get('nif')!.touched" class="alert alert-danger">
         O campo NIF é obrigatório.
       </div>
-      <div *ngIf="form.get('nif')?.errors?.['validateNIF']" class="alert alert-danger">
+      <div *ngIf="form.get('nif')?.errors?.['validateNIF'] && form.get('nif')!.touched" class="alert alert-danger">
         O NIF deve conter exatamente 9 dígitos numéricos.
       </div>
-      <div *ngIf="form.get('nif')?.errors?.['invalidNifCheckDigit']" class="alert alert-danger">
+      <div *ngIf="form.get('nif')?.errors?.['invalidNifCheckDigit'] && form.get('nif')!.touched" class="alert alert-danger">
         O NIF é inválido.
       </div>
   
@@ -67,11 +68,11 @@
    
     <div class="form-group">
       <label for="postalCode">Código Postal:</label>
-      <input type="text"  id="postalCode" class="form-control item" 
+      <input type="text"  id="postalCode" placeholder="Insira o Código Postal" class="form-control item" 
       formControlName="postalCode"
       required>
       <div *ngIf="form.get('postalCode')?.errors?.['required'] && form.get('postalCode')!.touched" class="alert alert-danger">Código Postal é obrigatório.</div>
-      <div *ngIf="form.get('country')!.value === 'Portugal' && form.get('postalCode')?.errors?.['invalidPortugalPostalCode']" class="alert alert-danger">Código Postal inválido para Portugal.</div>
+      
     </div>
     
   
@@ -80,50 +81,36 @@
     <div class="form-group">
         <label for="address">Endereço:</label>
         <input type="text" placeholder="Insira seu Endereço" class="form-control item" id="address" formControlName="address" required>
-        <div *ngIf="form.get('address')?.errors?.['required']" class="alert alert-danger">Endereço é obrigatório</div>
+        <div *ngIf="form.get('address')?.errors?.['required'] && form.get('address')?.dirty" class="alert alert-danger">Endereço é obrigatório</div>
       </div>
   
   
-    <div class=" form-group">
-      <label for="number">Contato telefônico</label>
-      <input type="text" formControlName="phoneNumber" id="phone-number"
-      placeholder="Insira seu Contato" class="form-control item"  required>
+      <div class="form-group">
+        <label for="number">Contato telefônico</label>
+        <input type="text" formControlName="phoneNumber" id="phone-number"
+          placeholder="Insira seu Contato" class="form-control item" required>
       
-      <div *ngIf="form.get('phoneNumber')?.errors?.['required'] && form.get('phoneNumber')?.dirty" class="alert alert-danger">
-        O Telefone é obrigatório.
+        <div *ngIf="form.get('phoneNumber')?.errors?.['required'] && form.get('phoneNumber')?.dirty" class="alert alert-danger">
+          O Telefone é obrigatório.
+        </div>
+        <div *ngIf="form.get('phoneNumber')?.errors?.['invalidPhone'] && form.get('phoneNumber')?.dirty" class="alert alert-danger">
+          Telefone inválido. Deve conter 9 dígitos e começar com 3, 2 ou 9.
+        </div>
       </div>
-      <div *ngIf="form.get('phoneNumber')?.errors?.['invalidPhone'] && form.get('phoneNumber')?.dirty" class="alert alert-danger">
-        Telefone inválido. Deve conter 9 dígitos e começar com 3, 2 ou 9.
-      </div>
-    </div>
 
 
     <div class="form-group">
-      <button type="button" class="btn btn-block create-account" [disabled]="!form.valid" (click)="onSubmit()">
-        Enviar Formuláio
+      <button type="button" class="btn btn-block create-account" [disabled]="isFormIncomplete()" (click)="onSubmit()">
+        Enviar Formulário
       </button>
     </div>
 
-    <!-- Alertas após a submissão do formulário -->
-    <div *ngIf="formSubmitted">
-      <div *ngIf="form.invalid" class="alert alert-danger">
-        Formulário está incorreto.
-      </div>
-      <div *ngIf="form.valid" class="alert alert-success">
-        Formulário enviado.
-      </div>
+    <!-- Exibir mensagem após a submissão do formulário -->
+    <div *ngIf="formSubmitted" class="alert alert-success">
+      Formulário enviado.
     </div>
-
   </form>
 
-  <div class="social-media">
-    <h5>Sign up with social media</h5>
-    <div class="social-icons">
-        <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
-        <a href="#"><i class="icon-social-google" title="Google"></i></a>
-        <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
-    </div>
-</div>
 </div>
 </body>
 </html>
