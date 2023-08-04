@@ -10,7 +10,9 @@ Olá avaliador, seja bem vindo! :smiley:
 
  Aprecio a oportunidade de ter meu código revisado e agradeço quaisquer comentários ou dicas para melhorar e me tornar um programador melhor, caso você deseje oferecer algum.
 
-Então, vamos começar! Você pode encontrar meu teste na "Criar um link" para  frontend.
+Então, vamos começar! 
+
+
 
   ![giphy](https://github.com/luizleo2/FormTest/assets/65710857/ac85ee42-cd9f-4164-8986-903bd333459c)
 
@@ -61,7 +63,8 @@ Segue aqui o Design do projeto
 
 ### Layout
 
-"Colocar a foto"
+
+![Captura de Tela (3)](https://github.com/luizleo2/FormTest/assets/65710857/8fd19471-a759-4285-a953-755abf15ba6b)
 
 
 # Angular 
