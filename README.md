@@ -13,9 +13,9 @@ Olá avaliador, seja bem vindo! :smiley:
 Então, vamos começar! 
 
 
-
-  ![giphy](https://github.com/luizleo2/FormTest/assets/65710857/ac85ee42-cd9f-4164-8986-903bd333459c)
-
+<p align="center">
+<img src=.github/assets/giphygo.gif height="350px" />
+</p>
 
 
 # O projeto 🎯
@@ -64,7 +64,7 @@ Segue aqui o Design do projeto
 ### Layout
 
 
-![Captura de Tela (3)](https://github.com/luizleo2/FormTest/assets/65710857/8fd19471-a759-4285-a953-755abf15ba6b)
+<img src=.github/assets/Wireframe.png height="500px" />
 
 
 # Angular 
@@ -74,25 +74,44 @@ Foi meu primeiro contato com Angular, e confesso que me empolguei ao enfrentar o
 
 Confesso que tive alguns desafios ao implementar as soluções e conectar a lógica de validação com a apresentação no formulário. No entanto, a cada obstáculo superado, senti uma sensação gratificante de aprendizado e crescimento.
 
-### Lógicas das Validações 
+### Lógicas das Validações: 
 
 
+##### Campo de Validação do Código Postal 
+```
+export function validatePortugalPostalCode(control: any) {
+    const postalCodePattern = /^[0-9]{4}-[0-9]{3}$/;
+  
+    
+    const country = 'Portugal'; 
+  
+    if (country === 'Portugal') {
+      if (!postalCodePattern.test(control.value)) {
+        return { 'invalidPortugalPostalCode': true };
+      }
+    }
+  
+    return null;
+  }
+}
+```
 
 
 # Tempo de Produção ⏱️
 
-- 1 dia para montar o formulário e validar os campos de: Nome, Email, Nif
-- 1 dia para melhorar a interface 
-- 1 dia inteiro para tentar as restantes validações e refatorar o codigo 
+- 1 dia para montar o formulário e validar os campos de: Nome, Email, NIF.
+- 1 dia para validar os campos de Data de Nascimento, Código Postal, Endereço e Contato, além de melhorar a interface.
+- 1 dia para melhorar a interface e tentar implementar os campos de Cidade e País.
 
 
 ## Segunda chance 🥈
 
 Se eu tivesse uma segunda oportunidade para continuar este projeto, eu finalizaria os campos restantes. 
 
-Adicionaria mais estilização e alteraria a forma de visualização com um formulário em etapas (multi-step),
-os campos de Data de nascimento e contato usaria mascaras da propria biblioteca do angular 
-assim proporcionando uma maior interatividade com o cliente.
+Adicionaria mais estilização e alteraria a forma de visualização com um formulário em etapas (multi-step). 
+
+Usaria máscaras da própria biblioteca do Angular para os campos de Data de Nascimento e Contato, 
+proporcionando uma maior interatividade com o cliente.
 
 Além disso, facilitaria a correção de erros, 
 pois haveria "menos" campos visíveis para responder.
@@ -105,6 +124,9 @@ Acredito ter realizado um bom trabalho e atendido minimamente às expectativas.
 
 Um muito obrigado pelo seu tempo, e todo conselho de melhoria é muito bem-vindo e necessário para esse meu início de caminhada, independente do resultado
 
-> Para a versão final clique aqui [this](https://form-test-six-sigma.vercel.app/)
+> Para a versão final [clique aqui](https://form-test-six-sigma.vercel.app/)
 
+<p align="center">
+<img src=.github/assets/giphydone1.gif height="350px" />
+</p>
 
