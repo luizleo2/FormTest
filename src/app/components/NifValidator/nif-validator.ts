@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import {  ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function validateNIF(): ValidatorFn {

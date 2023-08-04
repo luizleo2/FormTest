@@ -97,28 +97,3 @@ border-radius: 20px;
       line-height: 70px;
   }
 }
-
-
-
-
-
-/* .ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; 
-}
-  
-  .ng-invalid:not(form)  {
-    border-left: 5px solid #a94442;
-  }
-
-  .invalid-date input[type="date"] {
-    border: 1px solid red;
-  }
-
-
-  .invalid-date {
-    border-left: 5px solid #FF0000;
-  }
-  
-  .valid-date {
-    border-left: 5px solid #42A948; 
-  } */

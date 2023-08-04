@@ -1,4 +1,3 @@
-
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function validatePhoneNumber(control: AbstractControl): ValidationErrors | null {
