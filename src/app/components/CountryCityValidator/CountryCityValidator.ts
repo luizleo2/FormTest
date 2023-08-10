@@ -51,11 +51,16 @@ export class LinkedList {
   }
 }
 
-// Criar a lista encadeada com os valores desejados
 export function createLinkedList(): LinkedList {
   const linkedList = new LinkedList();
   linkedList.addNode('Portugal', 'Lisboa');
   linkedList.addNode('Portugal', 'Porto');
+  linkedList.addNode('Brasil', 'Salvador');
+  linkedList.addNode('Brasil', 'Rio de Janeiro');
+  linkedList.addNode('Bélgica', 'Bruxelas');
+  linkedList.addNode('Bélgica', 'Antuérpia');
+  linkedList.addNode('Espanha', 'Barcelona');
+  linkedList.addNode('Espanha', 'Madrid');
   linkedList.addNode('França', 'Paris');
   linkedList.addNode('França', 'Marselha');
   return linkedList;

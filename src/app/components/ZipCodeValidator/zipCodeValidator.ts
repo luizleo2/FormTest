@@ -1,15 +1,19 @@
-export function validatePortugalPostalCode(control: any) {
-    const postalCodePattern = /^[0-9]{4}-[0-9]{3}$/;
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
+export function PostalCodeValidator(control: AbstractControl): ValidationErrors | null {
+  const country = control.get('country')?.value;
+  const postalCodePattern = /^[0-9]{4}-[0-9]{3}$/;
   
-    
-    const country = 'Portugal'; 
-  
-    if (country === 'Portugal') {
-      if (!postalCodePattern.test(control.value)) {
-        return { 'invalidPortugalPostalCode': true };
-      }
+  if (country === 'Portugal') {
+    if (!postalCodePattern.test(control.value)) {
+      return { invalidPortugalPostalCode: true };
     }
-  
-    return null;
+  } else {
+    if (!postalCodePattern.test(control.value)) {
+      return { invalidNonPortugalPostalCode: true };
+    }
   }
   
+  return null;
+}
+

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 import { validateNIF } from '../NifValidator/nif-validator';
 import { checkAge } from '../DateValidator/dateValidator';
 import { validatePhoneNumber } from '../NumberValidator/numbervalidator';
 import { createLinkedList, LinkedList} from '../CountryCityValidator/CountryCityValidator';
-
+import { PostalCodeValidator } from '../ZipCodeValidator/zipCodeValidator';
 @Component({
 
   selector: 'app-form',
@@ -15,14 +15,11 @@ import { createLinkedList, LinkedList} from '../CountryCityValidator/CountryCity
 export class FormComponent implements OnInit {
   form: FormGroup;
   formSubmitted = false;
-  
-
-  countries: string[] = [];
+  countries: string[] = ['Portugal', 'Brasil', 'Bélgica', 'Espanha', 'França'];
   cities: string[] = [];
-  
-
   dateOfBirth: string = ''; 
-  validationResult: string = '';
+  validationResult: ValidationErrors | null = null;
+  isPostalCodeValid: boolean | null = null;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -32,13 +29,28 @@ export class FormComponent implements OnInit {
       dateOfBirth: ['', [Validators.required, this.ageValidator]],
       address: ['',[Validators.required,]],
       phoneNumber: ['', [Validators.required, validatePhoneNumber]],
-      postalCode: ['', [Validators.required]],
+      postalCode: ['', [Validators.required, PostalCodeValidator]],
       country: ['Portugal', [Validators.required]],
       city: ['', [Validators.required]],
     });
     this.countries = this.getDistinctCountries();
     this.onCountryChange(); // Preenche a lista de cidades com base no país inicial (Portugal)
+    this.fillCitiesOptions(this.form.get('country')?.value);
 
+}
+
+
+validatePostalCode() {
+  const postalCodeControl = this.form.get('postalCode');
+  if (postalCodeControl) {
+    const validationResult = PostalCodeValidator(postalCodeControl);
+    this.isPostalCodeValid = validationResult === null;
+  }
+}
+
+isCountryPortugal(): boolean {
+  const country = this.form.get('country')?.value;
+  return country === 'Portugal';
 }
 
 
@@ -52,8 +64,17 @@ fillCitiesOptions(selectedCountry: string) {
 
 onCountryChange() {
   const selectedCountry = this.form.get('country')?.value;
-  if (selectedCountry) {
-    this.fillCitiesOptions(selectedCountry);
+  this.fillCitiesOptions(selectedCountry);
+  
+  // Realizar a validação do Código Postal apenas se o país for Portugal
+  if (selectedCountry === 'Portugal') {
+    const postalCodeControl = this.form.get('postalCode');
+    if (postalCodeControl) {
+      const validationResult = PostalCodeValidator(postalCodeControl);
+      this.isPostalCodeValid = validationResult === null;
+    }
+  } else {
+    this.isPostalCodeValid = null;
   }
 }
 
@@ -66,6 +87,8 @@ getCitiesByCountry(country: string): string[] {
   const linkedList = createLinkedList();
   return linkedList.getCitiesByCountry(country);
 }
+
+
 
 
 ngOnInit() {
@@ -83,12 +106,13 @@ ngOnInit() {
     const emailControl = this.form.get('email');
     const birthControl = this.form.get('dateOfBirth');
     const nifControl = this.form.get('nif');
+    const postalCodeControl = this.form.get('postalCode')
     const addressControl = this.form.get('address');
     const phoneControl = this.form.get('phoneNumber');
   
     // Verificar se algum campo obrigatório está vazio
     if (!nameControl?.value || !emailControl?.value || !birthControl?.value
-      || !nifControl?.value || !addressControl?.value || !phoneControl?.value) {
+      || !nifControl?.value || !addressControl?.value || !phoneControl?.value || !postalCodeControl?.value) {
       return true;
     }
     return false;
