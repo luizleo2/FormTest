@@ -25,7 +25,7 @@ export class LinkedList {
       currentNode.next = newNode;
     }
   }
-  
+
   getDistinctCountries(): string[] {
     const countries: string[] = [];
     let currentNode = this.head;

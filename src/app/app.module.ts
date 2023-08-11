@@ -8,12 +8,8 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    FormComponent,
-  ],
+  declarations: [AppComponent, FormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +19,5 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  
 })
-export class AppModule { }
+export class AppModule {}
