@@ -60,14 +60,14 @@ Segue aqui o Design do projeto
 
 <img src=.github/assets/Wireframe.png height="500px" />
 
-# Angular
+# Angular :computer:
 
 Embora o teste aborde conceitos fundamentais de HTML, CSS e JavaScript, como havia dito tenho projetos em React e Vanilla JavaScript.
 Foi meu primeiro contato com Angular, e confesso que me empolguei ao enfrentar o desafio de criar um formulário com validações específicas. Dediquei tempo para estudar a documentação e outros recursos de aprendizagem, buscando aplicar as melhores práticas.
 
 Confesso que tive alguns desafios ao implementar as soluções e conectar a lógica de validação com a apresentação no formulário. No entanto, a cada obstáculo superado, senti uma sensação gratificante de aprendizado e crescimento.
 
-#### Lista encadeada:
+#### Lista encadeada :cowboy_hat_face:
 
 Foi este o meu maior desafio, foi literalmente um combo de tentativas e erros com bastante uso da massa cinzenta.
 Então, basicamente, a lógica foi:
