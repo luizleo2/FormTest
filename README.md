@@ -66,37 +66,34 @@ Foi meu primeiro contato com Angular, e confesso que me empolguei ao enfrentar o
 
 Confesso que tive alguns desafios ao implementar as soluções e conectar a lógica de validação com a apresentação no formulário. No entanto, a cada obstáculo superado, senti uma sensação gratificante de aprendizado e crescimento.
 
-### Lógicas das Validações:
+#### Lista encadeada:
 
-##### Campo de Validação do Código Postal
+Foi este o meu maior desafio, foi literalmente um combo de tentativas e erros com bastante uso da massa cinzenta.
+Então, basicamente, a lógica foi:
 
-```
-export function validatePortugalPostalCode(control: any) {
-    const postalCodePattern = /^[0-9]{4}-[0-9]{3}$/;
+Criar uma classe para representar o nó ```Node```.
 
+A classe ```LinkedList``` é onde a mágica acontece e gerencia toda a lista encadeada. 
 
-    const country = 'Portugal';
+O método ```getDistinctCountries``` fica responsável por percorrer a lista e retornar um array de países.
 
-    if (country === 'Portugal') {
-      if (!postalCodePattern.test(control.value)) {
-        return { 'invalidPortugalPostalCode': true };
-      }
-    }
+O método ```getCitiesByCountry``` recebe o país como parâmetro e retorna a lista de cidades associadas.
 
-    return null;
-  }
-}
-```
+A função ```createLinkedList``` cria uma instância de ```LinkedList``` e preenche os dados de exemplo. 
+
+Essa função fica responsável por adicionar os nós à lista, representando diferentes países e suas cidades.
+
 
 # Tempo de Produção ⏱️
 
 - 1 dia para montar o formulário e validar os campos de: Nome, Email, NIF.
 - 1 dia para validar os campos de Data de Nascimento, Código Postal, Endereço e Contato, além de melhorar a interface.
 - 1 dia para melhorar a interface e tentar implementar os campos de Cidade e País.
+- 2 dias Lista encadeada validação Código postal com o país selecionado e  melhorar função de validação do botão "enviar"
 
 ## Segunda chance 🥈
 
-Se eu tivesse uma segunda oportunidade para continuar este projeto, eu finalizaria os campos restantes.
+Se eu tivesse uma segunda oportunidade para continuar este projeto,
 
 Adicionaria mais estilização e alteraria a forma de visualização com um formulário em etapas (multi-step).
 
